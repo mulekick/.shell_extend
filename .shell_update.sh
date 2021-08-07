@@ -12,13 +12,13 @@ if [[ ! -d $cmdarchdir ]]; then
 fi
 
 # create symlink in shell-extend directory
-ln -s $cmdarchdir  $HOME/.shell-extend/.cmd_archive
+ln -s $cmdarchdir $HOME/.shell_extend/.cmd_archive
 
 # set shell extension
 extendshell='\n\n
 # ------ SET SHELL EXTENSIONS ------\n\n
-if [[ -f $HOME/.shell-extend/.bash_extend ]]; then\n
-\t. $HOME/.shell-extend/.bash_extend\n
+if [[ -f $HOME/.shell_extend/.bash_extend ]]; then\n
+\t. $HOME/.shell_extend/.bash_extend\n
 fi'
 
 # append to .bashrc
@@ -28,7 +28,7 @@ fi
 
 # set custom .vimrc
 if [[ ! -f $HOME/.vimrc ]]; then
-    cp $HOME/.shell-extend/.vimrc_default $HOME/.vimrc
+    cp $HOME/.shell_extend/.vimrc_default $HOME/.vimrc
 fi
 
 # success

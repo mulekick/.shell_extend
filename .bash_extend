@@ -1,7 +1,7 @@
 # ------ SHELL CUSTOMIZATIONS ------
 
 # export customizations folder
-export SHELL_EXTEND="$HOME/.shell-extend"
+export SHELL_EXTEND="$HOME/.shell_extend"
 
 # export scripts folder
 export SHELL_SCRIPTS="$SHELL_EXTEND/.scripts"
