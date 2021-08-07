@@ -1,5 +1,19 @@
 #!/bin/bash
 
+# create symlink to command archive directory
+echo -e "$DASH_LINE\nplease provide your command archive directory path :"
+
+# read input from user
+read -r cmdarchdir
+
+# if directory does not exist, create
+if [[ ! -d $cmdarchdir ]]; then
+    mkdir -pv $cmdarchdir
+fi
+
+# create symlink in shell-extend directory
+ln -s $cmdarchdir  $HOME/.shell-extend/.cmd_archive
+
 # set shell extension
 extendshell='\n\n
 # ------ SET SHELL EXTENSIONS ------\n\n
