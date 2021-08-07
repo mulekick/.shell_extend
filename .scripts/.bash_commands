@@ -1,0 +1,76 @@
+#!/bin/bash
+
+# personal aliases
+
+alias which='which -a'                           # print all matching pathnames
+
+alias content='ls -hAl --group-directories-first --color --classify'    # file sizes in K/all files but . and ../list format (sort alphabetically)/directories first/colors/indicator
+
+alias makedir='mkdir -pv'                        # create parents dirs/verbose
+
+alias remsafe='rm -rIdv'                         # recursive removal/minimal prompt/remove empty dirs/verbose
+
+alias copyall='cp -rpiv'                         # recursive copy/preserve attributes/overwrite prompt/verbose
+
+alias moveall='mv -i'                            # overwrite prompt
+
+alias procres='echo $? || echo $?'               # view last command exit code
+
+alias vin='vi -c ":set nu"'                      # number lines in vi
+
+alias less='less -R'                             # wrapper for less; display ANSI color escape sequences
+
+alias grep='grep --color=auto'                   # wrapper for grep; output colors
+
+alias jobs='jobs -l'                             # wrapper for jobs; print PID
+
+# search current history and command archives (follow command line symlinks), less + color escape sequence
+alias histcmd='history | grep $(find -H $SHELL_HISTORY * -maxdepth 1 -regextype posix-extended -regex "^[^.].*history\..*" | sort -) - --color=always -hTE -e'
+
+# save current history to a file in commands archive
+alias histsave='bash $SHELL_SCRIPTS/.bash_commands.sh hs'
+
+# prune (uniq + sort + format) command history files
+alias histprune='bash $SHELL_SCRIPTS/.bash_commands.sh hp'
+
+# tail 25 last commands from history, change line numbering and separator
+alias prevcmd='history | tail -n 25 - | cut -d " " -f 4- | nl -s " -> " -w 2'
+
+# search from starting point, n directories depth for given file name
+alias findnme='bash $SHELL_SCRIPTS/.bash_commands.sh fn'
+
+# search from starting point, n directories depth for given expression
+alias findrgx='bash $SHELL_SCRIPTS/.bash_commands.sh fr'
+
+# show matching file types in target directory
+alias ftype='bash $SHELL_SCRIPTS/.bash_commands.sh ft'
+
+# output file system tree from starting point, pruned, match optional expression
+alias arbo='bash $SHELL_SCRIPTS/.bash_commands.sh ar'
+
+# search for pattern matching packages names
+alias pkfind='bash $SHELL_SCRIPTS/.bash_commands.sh pk'
+
+# show single package details
+alias pdetail='bash $SHELL_SCRIPTS/.bash_commands.sh pd'
+
+# replace tabs by default indentation in file
+alias tab2space='bash $SHELL_SCRIPTS/.bash_commands.sh ts'
+
+# print environment variables in a civilized manner
+alias varenv='bash $SHELL_SCRIPTS/.bash_commands.sh en'
+
+# execute visudo with vim
+alias visudo='sudo EDITOR=vim visudo'
+
+# output filesystems informations
+alias showfs='lsblk -fmo +TYPE,MAJ:MIN'
+
+# output device details
+alias showdv='bash $SHELL_SCRIPTS/.bash_commands.sh sd'
+
+# output partition details
+alias showpt='bash $SHELL_SCRIPTS/.bash_commands.sh pt'
+
+# help on custom commands
+alias cmdhelp='cat $SHELL_SCRIPTS/README.md'

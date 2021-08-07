@@ -1,0 +1,19 @@
+# export env variables for common regex patterns
+
+# Whole Numbers
+export RGX_INT='^-?[0-9]+$'
+
+# Decimal Numbers
+export RGX_FLT='^-?[0-9]*\.[0-9]+$'
+
+# Negative, Positive Whole + Decimal Numbers 
+export RGX_NUM='^-?[0-9]*(\.[0-9]+)?$'
+
+# Alphanumeric without space
+export RGX_ALP='^[a-zA-Z0-9]*$'
+
+# Alphanumeric with space
+export RGX_STR='^[a-zA-Z0-9\s]*$'
+
+# file path (absolute, relative, current directory)
+export RGX_FILE='^(.+)/([^/]+)$'

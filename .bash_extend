@@ -1,0 +1,28 @@
+# ------ SHELL CUSTOMIZATIONS ------
+
+# export customizations folder
+export SHELL_EXTEND="$HOME/.shell-extend"
+
+# export scripts folder
+export SHELL_SCRIPTS="$SHELL_EXTEND/.scripts"
+
+# export commands history folder
+export SHELL_HISTORY="$SHELL_EXTEND/.cmd_archive"
+
+# export default indentation (4 spaces)
+export DEFAULT_INDENT='    '
+
+# export other custom environment variables
+if [[ -f $SHELL_SCRIPTS/.bash_exports ]]; then
+    . $SHELL_SCRIPTS/.bash_exports  
+fi
+
+# export common regexp patterns as environment variables
+if [[ -f $SHELL_SCRIPTS/.bash_regex ]]; then
+    . $SHELL_SCRIPTS/.bash_regex
+fi
+
+# set aliases for custom commands
+if [[ -f $SHELL_SCRIPTS/.bash_commands ]]; then
+    . $SHELL_SCRIPTS/.bash_commands
+fi
