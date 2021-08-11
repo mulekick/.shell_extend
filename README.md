@@ -9,7 +9,7 @@ This is a collection of commands and tools that I designed to make my life easie
 # How to install
   - cd $HOME
   - git clone https://github.com/mulekick/.shell_extend.git
-  - . .shell_update.sh
+  - . .shell_extend/.shell_update.sh
 
 # Installation
   - When prompted to, type the absolute path to your command archive directory (place it somewhere under your $HOME).
