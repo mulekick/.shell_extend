@@ -11,7 +11,7 @@ This is a collection of commands and tools that I designed to make my life easie
   - git clone https://github.com/mulekick/.shell_extend.git
   - . .shell_extend/.shell_update.sh
 
-# Installation
+# Shell update
   - When prompted to, type the absolute path to your command archive directory (place it somewhere under your $HOME).
   - Your command archive directory will be automatically created if necessary.
   - Your .bashrc will then be automatically updated to export new aliases and environment variables at shell startup.
