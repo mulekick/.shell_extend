@@ -6,21 +6,21 @@
 # -------------------------------------------------
 # showdv : display device details (all devices if $2 is empty) + sudo revocation
 if [[ $1 = "sd" ]]; then
-     sudo echo $DASH_LINE && sudo fdisk -lo +UUID $2  | sed -r "s/^$/$DASH_LINE/g" - && echo $DASH_LINE && sudo -k
+     sudo echo "$DASH_LINE" && sudo fdisk -lo +UUID "$2"  | sed -r "s/^$/$DASH_LINE/g" - && echo "$DASH_LINE" && sudo -k
 # -------------------------------------------------
 # histsave : ask for confirmation and run history saving
 elif [[ $1 = "hs" ]]; then
     echo 'do you want to save and reset current history ? (Y/n)'
     read -r confirm
-    [[ $confirm = 'Y' ]] && 
-    . "$SHELL_SCRIPTS/.save_history.sh"
+    # shellcheck disable=SC1091
+    [[ $confirm = 'Y' ]] && . "$SHELL_SCRIPTS/.save_history.sh"
 # -------------------------------------------------
 # histprune : ask for confirmation and run command history pruning
 elif [[ $1 = "hp" ]]; then
     echo 'do you want to prune command archive files ? (Y/n)'
     read -r confirm
-    [[ $confirm = 'Y' ]] && 
-    . "$SHELL_SCRIPTS/.prune_history.sh"
+    # shellcheck disable=SC1091
+    [[ $confirm = 'Y' ]] && . "$SHELL_SCRIPTS/.prune_history.sh"
 # -------------------------------------------------
 # params will be the command id and actual command line param
 elif [[ $# -lt 2 ]]; then
@@ -31,12 +31,12 @@ elif [[ $# -lt 2 ]]; then
 # findnme : recursive search for file name 
 elif [[ $1 = "fn" ]]; then
     # search from $2 starting point, $3 directories depth for file name matching $4
-    find -P $2 -maxdepth $3 -name $4 -ls
+    find -P "$2" -maxdepth "$3" -name "$4" -ls
 # -------------------------------------------------
 # findrgx : recursive search for expression
 elif [[ $1 = "fr" ]]; then
     # search from $2 starting point, $3 directories depth for file matching expr $4
-    find -P $2 -maxdepth $3 -regextype 'posix-extended' -regex $4 -ls
+    find -P "$2" -maxdepth "$3" -regextype 'posix-extended' -regex "$4" -ls
 # -------------------------------------------------
 # ftype : show matching file types in target directory
 elif [[ $1 = "ft" ]]; then
@@ -46,12 +46,12 @@ elif [[ $1 = "ft" ]]; then
 # arbo :  output file system tree from starting point, pruned, less + color escape sequence
 elif [[ $1 = "ar" ]] && [[ $# -eq 2 ]]; then
     # output everything
-    tree --prune -afFhpC $2 | less -R -
+    tree --prune -afFhpC "$2" | less -R -
 # -------------------------------------------------
 # arbo : same as the above, match optional pattern
 elif [[ $1 = "ar" ]] && [[ $# -eq 3 ]]; then
     # output matches
-    tree --prune -afFhpCP $3 $2 | less -R -
+    tree --prune -afFhpCP "$3" "$2" | less -R -
 # -------------------------------------------------
 # pkind : search for pattern matching packages names with apt-cache
 elif [[ $1 = "pk" ]]; then
@@ -90,9 +90,9 @@ elif [[ $1 = "en" ]]; then
 # -------------------------------------------------
 # showpt : display more details on partition and file system for device $2 + sudo revocation
 elif [[ $1 = "pt" ]]; then
-    sudo echo $DASH_LINE && sudo blkid -p $2 | sed -r "s/\s/\n/g" && 
-    echo $DASH_LINE && sudo dumpe2fs $2 | grep -F 'Filesystem' &&
-    echo $DASH_LINE && sudo -k
+    sudo echo "$DASH_LINE" && sudo blkid -p "$2" | sed -r "s/\s/\n/g" && 
+    echo "$DASH_LINE" && sudo dumpe2fs "$2" | grep -F 'Filesystem' &&
+    echo "$DASH_LINE" && sudo -k
 # -------------------------------------------------
 # print process exit code for $2 execution (DOESN'T WORK, BUT WOULD BE GREAT)
 # elif [[ $1 = "ec" ]] && [[ $# -eq 2 ]] && [[ -n $2 ]]; then

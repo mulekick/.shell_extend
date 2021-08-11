@@ -13,7 +13,7 @@ if [[ -f "$HOME/.bash_history" ]]; then
     history -w && history -c
 
     # cat .bash_history contents to filename
-    cat "$HOME/.bash_history" > $filename
+    cat "$HOME/.bash_history" > "$filename"
 
     # empty .bash_history
     cat /dev/null > "$HOME/.bash_history"
