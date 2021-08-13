@@ -18,4 +18,4 @@ This is a collection of commands and tools that I designed to make my life easie
   - Restart your shell session, and you're done.
 
 # Get started
-  - Once setup is complete and shell restarted, type cmdhelp to view the list of [available custom commands](./.scripts/README.md)
+  - Once setup is complete and shell restarted, type cmdhelp to view the list of [available custom commands](./.scripts)
