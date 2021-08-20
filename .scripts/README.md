@@ -38,6 +38,9 @@ $ histprune
 $ prevcmd
   > list 25 last shell commands
 
+$ nscript <file>
+  > creates a new bash script and edits it
+
 $ findnme <directory> <depth> <name>
   > searches from starting point <directory>, <depth> directories depth for file name <name>
 

@@ -36,6 +36,9 @@ alias histprune='bash $SHELL_SCRIPTS/.bash_commands.sh hp'
 # tail 25 last commands from history, change line numbering and separator
 alias prevcmd='history | tail -n 25 - | cut -d " " -f 4- | nl -s " -> " -w 2'
 
+# create a new bash script
+alias nscript='bash $SHELL_SCRIPTS/.bash_commands.sh ns'
+
 # search from starting point, n directories depth for given file name
 alias findnme='bash $SHELL_SCRIPTS/.bash_commands.sh fn'
 

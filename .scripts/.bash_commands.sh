@@ -28,6 +28,29 @@ elif [[ $# -lt 2 ]]; then
     # failure
     exit 1
 # -------------------------------------------------
+# nscript : create new bash script and vi into it 
+elif [[ $1 = "ns" ]]; then
+    # resolve to full path
+    filename=$(realpath -q "$2")
+    # check if file already exists
+    if [[ -z $filename ]]; then
+        echo "failed to create file: $2 is not a valid path."
+        # failure
+        exit 1
+    elif [[ -e $filename ]]; then
+        echo "failed to create file: $filename already exists."
+        # failure
+        exit 1
+    fi
+    # touch
+    touch "$filename" &&
+    # chmod executable
+    chmod 755 "$filename" &&
+    # add shebang
+    echo -e "#!/bin/bash\n\n" >> "$filename" &&
+    # vi at line 3
+    vi -c ':set nu' +3 "$filename"
+# -------------------------------------------------
 # findnme : recursive search for file name 
 elif [[ $1 = "fn" ]]; then
     # search from $2 starting point, $3 directories depth for file name matching $4
