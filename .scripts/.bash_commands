@@ -95,7 +95,7 @@ alias pkfind='bash $SHELL_SCRIPTS/.bash_commands.sh pk'
 alias pdetail='bash $SHELL_SCRIPTS/.bash_commands.sh pd'
 
 # view configured sources
-alias aptsrc='cat /etc/apt/sources.list /etc/apt/sources.list.d/*'
+alias aptsrc='cat /etc/apt/sources.list /etc/apt/sources.list.d/* | grep -oE ^[^#].+$ -'
 
 # ------------ FILE SYSTEM ------------
 
