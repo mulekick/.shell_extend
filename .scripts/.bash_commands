@@ -5,7 +5,7 @@
 # ------------ HELP ------------
 
 # help on custom commands
-alias cmdhelp='cat $SHELL_SCRIPTS/README.md'
+alias cmdhelp='less - < $SHELL_SCRIPTS/README.md'
 
 # ------------ FILES ------------
 
