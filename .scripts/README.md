@@ -81,6 +81,9 @@ $ pkfind <expr>
 $ pdetail <pkgname>
   > list details about single package
 
+$ pstatus <expr>
+  > query dpkg database for installation status of packages matching <expr> (shell wildcards only)
+
 $ aptsrc
   > list all configured sources
 

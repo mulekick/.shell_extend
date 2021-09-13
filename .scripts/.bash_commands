@@ -94,6 +94,9 @@ alias pkfind='bash $SHELL_SCRIPTS/.bash_commands.sh pk'
 # show single package details
 alias pdetail='bash $SHELL_SCRIPTS/.bash_commands.sh pd'
 
+# check package(s) installation status 
+alias pstatus='bash $SHELL_SCRIPTS/.bash_commands.sh ps'
+
 # view configured sources
 alias aptsrc='cat /etc/apt/sources.list /etc/apt/sources.list.d/* | grep -oE ^[^#].+$ -'
 

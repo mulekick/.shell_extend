@@ -76,7 +76,7 @@ elif [[ $1 = "ar" ]] && [[ $# -eq 3 ]]; then
     # output matches
     tree --prune -afFhpCP "$3" "$2" | less -R -
 # -------------------------------------------------
-# pkind : search for pattern matching packages names with apt-cache
+# pkfind : search for pattern matching packages names with apt-cache
 elif [[ $1 = "pk" ]]; then
     # output name and short description
     apt-cache search "$2" --names-only | sort | less
@@ -85,6 +85,11 @@ elif [[ $1 = "pk" ]]; then
 elif [[ $1 = "pd" ]]; then
     # output full description
     apt-cache search "^$2$" --full
+# -------------------------------------------------
+# pstatus : query dpkg database for package(s) installation status
+elif [[ $1 = "ps" ]]; then
+    # output columnated list
+    dpkg-query -Wf='${Package} | ${Architecture} | ${Version} | ${Installed-Size} | ${Status}\n' "$2" | column -nts ' '
 # -------------------------------------------------
 # tab2space : ask for confirmation and run replacement script
 elif [[ $1 = "ts" ]] && [[ -f "$2" ]]; then

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # ------ SHELL CUSTOMIZATIONS ------
 
 # export customizations folder
@@ -14,15 +16,18 @@ export DEFAULT_INDENT='    '
 
 # export other custom environment variables
 if [[ -f $SHELL_SCRIPTS/.bash_exports ]]; then
-    . $SHELL_SCRIPTS/.bash_exports  
+    # shellcheck disable=SC1091
+    . "$SHELL_SCRIPTS/.bash_exports"
 fi
 
 # export common regexp patterns as environment variables
 if [[ -f $SHELL_SCRIPTS/.bash_regex ]]; then
-    . $SHELL_SCRIPTS/.bash_regex
+    # shellcheck disable=SC1091
+    . "$SHELL_SCRIPTS/.bash_regex"
 fi
 
 # set aliases for custom commands
 if [[ -f $SHELL_SCRIPTS/.bash_commands ]]; then
-    . $SHELL_SCRIPTS/.bash_commands
+    # shellcheck disable=SC1091
+    . "$SHELL_SCRIPTS/.bash_commands"
 fi
