@@ -24,14 +24,14 @@ $ findnme <directory> <depth> <name>
   > searches from starting point <directory>, <depth> directories depth for file name <name>
 
 $ findrgx <directory> <depth> <expr>
-  > searches from starting point <directory>, <depth> directories depth for paths matching <expr>
+  > searches from starting point <directory>, <depth> directories depth for paths matching regexp expression <expr>
 
 $ ftype <directory> <expr>
-  > list files matching <expr> in target directory (regexp extended, no recursion) 
+  > list files matching regexp expression <expr> in target directory (no recursion)
 
 $ arbo <path> <expr>
   > displays pruned file system tree starting from <path> using less + color 
-  > if wildcard pattern <expr> is present, shows only matching file names (shell wildcards only)
+  > if shell wildcard pattern <expr> is present, shows only matching files names
 
 ------------ PROCESSES ------------
 
@@ -49,7 +49,7 @@ $ prevcmd
   > list 25 last shell commands
 
 $ histcmd <expr>
-  > searches <expr> in history and command archives (regexp extended)
+  > searches commands matching regexp expression <expr> in history and command archives
   > pipe results to less for more flexibility
 
 $ histsave
@@ -76,13 +76,13 @@ $ visudo
 ------------ APT/DPKG ------------
 
 $ pkfind <expr>
-  > list packages matching <expr> in apt repositories
+  > list packages matching regular expression <expr> in apt repositories
 
 $ pdetail <pkgname>
-  > list details about single package
+  > list details about package <pkgname>
 
 $ pstatus <expr>
-  > query dpkg database for installation status of packages matching <expr> (shell wildcards only)
+  > query dpkg database for installation status of packages matching shell wildcards pattern <expr>
 
 $ aptsrc
   > list all configured sources
