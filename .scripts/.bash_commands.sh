@@ -51,22 +51,27 @@ elif [[ $1 = "ns" ]]; then
     # vi at line 3
     vi -c ':set nu' +3 "$filename"
 # -------------------------------------------------
-# findnme : recursive search for file name 
-elif [[ $1 = "fn" ]]; then
+# fsearch : recursive search for files name (shell wildcards)
+elif [[ $1 = "fs" ]] && [[ $# -eq 4 ]]; then
     # search from $2 starting point, $3 directories depth for file name matching $4
     find -P "$2" -maxdepth "$3" -name "$4" -ls
 # -------------------------------------------------
-# findrgx : recursive search for expression
-elif [[ $1 = "fr" ]]; then
-    # search from $2 starting point, $3 directories depth for file matching expr $4
-    find -P "$2" -maxdepth "$3" -regextype 'posix-extended' -regex "$4" -ls
+# fsearch : recursive search for files name (regexp extended)
+elif [[ $1 = "fs" ]] && [[ $# -eq 5 ]] && [[ $4 = "-r" ]]; then
+    # search from $2 starting point, $3 directories depth for file matching expr $5
+    find -P "$2" -maxdepth "$3" -regextype 'posix-extended' -regex "$5" -ls
+# -------------------------------------------------
+# fparse : output files lines matching pattern (regexp extended + remove tabs/separators for clean display)
+elif [[ $1 = "fp" ]] && [[ $# -eq 4 ]]; then
+    # search from $2 starting point, $3 directories, output every file line matching expr $4
+    find -P "$2" -maxdepth "$3" -type f -exec grep -E "$4" '{}' + | sed -r 's/^([^:]+):(\t|\s{4})*(.*)$/\1\^\3/gm'  | column -ts '^'
 # -------------------------------------------------
 # ftype : show matching file types in target directory
-elif [[ $1 = "ft" ]]; then
+elif [[ $1 = "ft" ]] && [[ $# -eq 3 ]]; then
     # output list one entry per line, launch file, update separator, output columns, regexp on 3rd param value
     find "$2" -maxdepth 1 | file -f - | sed -r 's/:\s{2,}/:/g' - | column -ts ':' | grep -E - --color=always -hTis -e "$3" 
 # -------------------------------------------------
-# arbo :  output file system tree from starting point, pruned, less + color escape sequence
+# arbo : output file system tree from starting point, pruned, less + color escape sequence
 elif [[ $1 = "ar" ]] && [[ $# -eq 2 ]]; then
     # output everything
     tree --prune -afFhpC "$2" | less -R -

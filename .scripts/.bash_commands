@@ -24,11 +24,11 @@ alias copyall='cp -rpiv'
 # overwrite prompt
 alias moveall='mv -i'
 
-# search from starting point, n directories depth for given file name
-alias findnme='bash $SHELL_SCRIPTS/.bash_commands.sh fn'
+# search from starting point, n directories depth for given file name/expression
+alias fsearch='bash $SHELL_SCRIPTS/.bash_commands.sh fs'
 
-# search from starting point, n directories depth for given expression
-alias findrgx='bash $SHELL_SCRIPTS/.bash_commands.sh fr'
+# search from starting point, n directories depth for file lines matching expression
+alias fparse='bash $SHELL_SCRIPTS/.bash_commands.sh fp'
 
 # show matching file types in target directory
 alias ftype='bash $SHELL_SCRIPTS/.bash_commands.sh ft'

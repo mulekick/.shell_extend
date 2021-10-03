@@ -20,14 +20,16 @@ $ copyall <source> <target>
 $ moveall <source> <target>
   > safe moving of files/directories
 
-$ findnme <directory> <depth> <name>
-  > searches from starting point <directory>, <depth> directories depth for file name <name>
+$ fsearch <directory> <depth> [-r] <name|expr>
+  > searches file system from starting point <directory>, <depth> directories depth for files name <name>
+  > if used with the -r option, searches for file names matching regexp expression <expr>
 
-$ findrgx <directory> <depth> <expr>
-  > searches from starting point <directory>, <depth> directories depth for paths matching regexp expression <expr>
+$ fparse <directory> <depth> <expr>
+  > searches file system from starting point <directory>, <depth> directories depth for all regular files
+  > outputs every file line matching regexp expression <expr>
 
 $ ftype <directory> <expr>
-  > list files matching regexp expression <expr> in target directory (no recursion)
+  > list types of files matching regexp expression <expr> in target directory (no recursion)
 
 $ arbo <path> <expr>
   > displays pruned file system tree starting from <path> using less + color 
