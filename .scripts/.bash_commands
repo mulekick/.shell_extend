@@ -58,7 +58,7 @@ alias which='which -a'
 alias prevcmd='history | tail -n 25 - | cut -d " " -f 4- | nl -s " -> " -w 2'
 
 # search current history and command archives (follow command line symlinks), less + color escape sequence
-alias histcmd='history | grep $(find -H $SHELL_HISTORY * -maxdepth 1 -regextype posix-extended -regex "^[^.].*history\..*" | sort -) - --color=always -hTE -e'
+alias histcmd='history | grep $(find -H $SHELL_HISTORY -maxdepth 1 -regextype posix-extended -regex "^[^.].*history\..*" | sort -) - --color=always -haTE -e'
 
 # save current history to a file in commands archive
 alias histsave='bash $SHELL_SCRIPTS/.bash_commands.sh hs'
