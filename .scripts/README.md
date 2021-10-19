@@ -18,22 +18,25 @@ $ copyall <source> <target>
   > safe recursive copy of files and directories (verbose)
 
 $ moveall <source> <target>
-  > safe moving of files/directories
+  > safe moving of files and directories
 
 $ fsearch <directory> <depth> [-r] <name|expr>
   > searches file system from starting point <directory>, <depth> directories depth for files name <name>
   > if used with the -r option, searches for file names matching regexp expression <expr>
+  > <expr> has to be double quoted to prevent shell expansion and yield proper results
 
 $ fparse <directory> <depth> <expr>
   > searches file system from starting point <directory>, <depth> directories depth for all regular files
   > outputs every file line matching regexp expression <expr>
+  > <expr> has to be double quoted to prevent shell expansion and yield proper results
 
 $ ftype <directory> <expr>
   > list types of files matching regexp expression <expr> in target directory (no recursion)
+  > <expr> has to be double quoted to prevent shell expansion and yield proper results
 
 $ arbo <path> <expr>
   > displays pruned file system tree starting from <path> using less + color 
-  > if shell wildcard pattern <expr> is present, shows only matching files names
+  > if shell wildcard pattern <expr> is present, displays only matching files names
 
 ------------ PROCESSES ------------
 
@@ -52,14 +55,15 @@ $ prevcmd
 
 $ histcmd <expr>
   > searches commands matching regexp expression <expr> in history and command archives
-  > pipe results to less for more flexibility
+  > <expr> has to be double quoted to prevent shell expansion and yield proper results
+  > you can also pipe results to less for more comfort
 
 $ histsave
   > saves current history to a new file in command archives
-  > clears current history
+  > clears current history and restarts shell
 
 $ histprune
-  > prunes (removes duplicate entries, sorts and formats) all unpruned files in the command archives
+  > prunes (removes duplicate entries, sorts and formats) all unpruned files in command archives
 
 ------------ UTILITIES ------------
 
@@ -79,6 +83,7 @@ $ visudo
 
 $ pkfind <expr>
   > list packages matching regular expression <expr> in apt repositories
+  > <expr> has to be double quoted to prevent shell expansion and yield proper results
 
 $ pdetail <pkgname>
   > list details about package <pkgname>
@@ -91,13 +96,13 @@ $ aptsrc
 
 ------------ FILE SYSTEM ------------
 
-$ showfs <device>
-  > display filesystems informations for block device <device> (all if not specified)
+$ blockdev <disk>
+  > display informations and partitions list for disk <disk> (all if not specified)
 
-$ showdv <device>
-  > display details for disk/block device <device> (all if not specified)
+$ parttable <disk>
+  > display partition table for disk <disk> (required)
 
-$ showpt <device>
-  > display partitioning details for disk/block device <device> (required)
+$ partdetail <partition>
+  > display partition details for partition <partition> (required)
 
------------------------------------------------------
+-------------------------------------

@@ -4,12 +4,8 @@
 # using exit because of "can only `return' from a function or sourced script" ?
 
 # -------------------------------------------------
-# showdv : display device details (all devices if $2 is empty) + sudo revocation
-if [[ $1 = "sd" ]]; then
-     sudo echo "$DASH_LINE" && sudo fdisk -lo +UUID "$2"  | sed -r "s/^$/$DASH_LINE/g" - && echo "$DASH_LINE" && sudo -k
-# -------------------------------------------------
 # histsave : ask for confirmation and run history saving
-elif [[ $1 = "hs" ]]; then
+if [[ $1 = "hs" ]]; then
     echo 'do you want to save and reset current history ? (Y/n)'
     read -r confirm
     # shellcheck disable=SC1091
@@ -24,7 +20,7 @@ elif [[ $1 = "hp" ]]; then
 # -------------------------------------------------
 # params will be the command id and actual command line param
 elif [[ $# -lt 2 ]]; then
-    echo "please provide command id and command line parameter"
+    echo "please provide command line parameter"
     # failure
     exit 1
 # -------------------------------------------------
@@ -84,7 +80,7 @@ elif [[ $1 = "ar" ]] && [[ $# -eq 3 ]]; then
 # pkfind : search for pattern matching packages names with apt-cache
 elif [[ $1 = "pk" ]]; then
     # output name and short description
-    apt-cache search "$2" --names-only | sort | less
+    apt-cache search "$2" --names-only | sort | sed -r "s/\s-\s/¤/" - | column -tN "PACKAGE,DESCRIPTION" -s "¤" | less
 # -------------------------------------------------
 # pdetail : show single package details with apt-cache
 elif [[ $1 = "pd" ]]; then
@@ -94,7 +90,7 @@ elif [[ $1 = "pd" ]]; then
 # pstatus : query dpkg database for package(s) installation status
 elif [[ $1 = "ps" ]]; then
     # output columnated list
-    dpkg-query -Wf='${Package} | ${Architecture} | ${Version} | ${Installed-Size} | ${Status}\n' "$2" | column -nts ' '
+    dpkg-query -Wf='${Package}|${db:Status-Abbrev}|${Version}|${Architecture}|${Installed-Size}|${binary:Synopsis}|${Origin}|${Maintainer}\n' "$2" | column -tN "NAME,STATUS,VERSION,ARCH,SIZE,DESCRIPTION,ORIGIN,MAINTAINER" -s "|"
 # -------------------------------------------------
 # tab2space : ask for confirmation and run replacement script
 elif [[ $1 = "ts" ]] && [[ -f "$2" ]]; then
@@ -120,6 +116,10 @@ elif [[ $1 = "en" ]]; then
             printenv "$v" | sed -r 's/:/\
 /g' - | nl -n ln -
         done
+# -------------------------------------------------
+# showdv : display device details + sudo revocation
+elif [[ $1 = "sd" ]]; then
+     sudo echo "$DASH_LINE" && sudo fdisk -lo +UUID "$2"  | sed -r "s/^$/$DASH_LINE/g" - && echo "$DASH_LINE" && sudo -k
 # -------------------------------------------------
 # showpt : display more details on partition and file system for device $2 + sudo revocation
 elif [[ $1 = "pt" ]]; then

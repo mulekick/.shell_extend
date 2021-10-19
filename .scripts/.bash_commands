@@ -102,11 +102,11 @@ alias aptsrc='cat /etc/apt/sources.list /etc/apt/sources.list.d/* | grep -oE ^[^
 
 # ------------ FILE SYSTEM ------------
 
-# output filesystems informations
-alias showfs='lsblk -fmo +TYPE,MAJ:MIN'
+# output block device informations
+alias blockdev='lsblk -fmo +TYPE,MAJ:MIN,PATH'
 
-# output device details
-alias showdv='bash $SHELL_SCRIPTS/.bash_commands.sh sd'
+# output partition table
+alias parttable='bash $SHELL_SCRIPTS/.bash_commands.sh sd'
 
 # output partition details
-alias showpt='bash $SHELL_SCRIPTS/.bash_commands.sh pt'
+alias partdetail='bash $SHELL_SCRIPTS/.bash_commands.sh pt'

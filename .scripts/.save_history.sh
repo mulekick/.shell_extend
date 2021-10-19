@@ -18,6 +18,9 @@ if [[ -f "$HOME/.bash_history" ]]; then
     # empty .bash_history
     cat /dev/null > "$HOME/.bash_history"
 
+    # restart shell
+    exec "$SHELL"
+
 # end if
 fi
 
