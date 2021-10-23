@@ -117,15 +117,19 @@ elif [[ $1 = "en" ]]; then
 /g' - | nl -n ln -
         done
 # -------------------------------------------------
-# showdv : display device details + sudo revocation
+# parttable : display device details + sudo revocation
 elif [[ $1 = "sd" ]]; then
-     sudo echo "$DASH_LINE" && sudo fdisk -lo +UUID "$2"  | sed -r "s/^$/$DASH_LINE/g" - && echo "$DASH_LINE" && sudo -k
+    sudo echo "$DASH_LINE" && sudo fdisk -lo +UUID "$2"  | sed -r "s/^$/$DASH_LINE/g" - && echo "$DASH_LINE"
+    # sudo revocation
+    sudo -k    
 # -------------------------------------------------
-# showpt : display more details on partition and file system for device $2 + sudo revocation
+# partdetail : display more details on partition and file system for device $2 + sudo revocation
 elif [[ $1 = "pt" ]]; then
     sudo echo "$DASH_LINE" && sudo blkid -p "$2" | sed -r "s/\s/\n/g" && 
     echo "$DASH_LINE" && sudo dumpe2fs "$2" | grep -F 'Filesystem' &&
-    echo "$DASH_LINE" && sudo -k
+    echo "$DASH_LINE"
+    # sudo revocation
+    sudo -k
 # -------------------------------------------------
 # print process exit code for $2 execution (DOESN'T WORK, BUT WOULD BE GREAT)
 # elif [[ $1 = "ec" ]] && [[ $# -eq 2 ]] && [[ -n $2 ]]; then

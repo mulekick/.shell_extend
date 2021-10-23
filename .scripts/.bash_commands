@@ -38,11 +38,17 @@ alias arbo='bash $SHELL_SCRIPTS/.bash_commands.sh ar'
 
 # ------------ PROCESSES ------------
 
-# view last command exit code
-alias procres='echo $? || echo $?'
-
 # wrapper for jobs; print PID
 alias jobs='jobs -l'
+
+# wrapper for pstree
+alias pstree='pstree -puTn'
+
+# processes that I own
+alias myps="ps -o start=START_TIME,args:100=PROCESS,tname=TERMINAL,ppid=PARENT,pid=SELF,euser=USER_EF,egroup=GROUP_EF --sort tname,start,ppid -U $LOGNAME"
+
+# view last command exit code
+alias procres='echo $? || echo $?'
 
 # ------------ SHELL ------------
 
