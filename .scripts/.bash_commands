@@ -8,7 +8,7 @@
 alias cmdhelp='less - < $SHELL_SCRIPTS/README.md'
 
 # bong smoking cow recites dhammapada verse
-alias bs='dhamma | cowsay -f /usr/share/cowsay/cows/bong.cow < /dev/stdin'
+alias bs='dhamma | cowsay -W 120 -e "°°" -f /usr/share/cowsay/cows/bong.cow < /dev/stdin'
 
 # ------------ FILES ------------
 
