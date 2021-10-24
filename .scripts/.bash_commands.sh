@@ -59,8 +59,8 @@ elif [[ $1 = "fs" ]] && [[ $# -eq 5 ]] && [[ $4 = "-r" ]]; then
 # -------------------------------------------------
 # fparse : output files lines matching pattern (regexp extended + remove tabs/separators for clean display)
 elif [[ $1 = "fp" ]] && [[ $# -eq 4 ]]; then
-    # search from $2 starting point, $3 directories, output every file line matching expr $4
-    find -P "$2" -maxdepth "$3" -type f -exec grep -nE "$4" '{}' + | sed -r 's/^([^:]+):([^:]+):(\t|\s{4})*(.*)$/\1\^\2^\4/gm' - | cut -c -145 - | column -ts '^' -N FILE,LINE,MATCH
+    # search from $2 starting point, $3 directories, output every file line matching expr $4, cut match width to 145 to bypass colums messing the terminal ...
+    find -P "$2" -maxdepth "$3" -type f -exec grep -nE "$4" '{}' + | sed -r 's/^([^:]+):([^:]+):(\t|\s)*(.*)$/\1\^\2^\4/gm' - | cut -c -145 - | column -ts '^' -N FILE,LINE,MATCH
 # -------------------------------------------------
 # ftype : show matching file types in target directory
 elif [[ $1 = "ft" ]] && [[ $# -eq 3 ]]; then
