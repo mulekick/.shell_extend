@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # personal aliases
-
+alias 'time=/usr/bin/time '
 # ------------ HELP ------------
 
 # help on custom commands
