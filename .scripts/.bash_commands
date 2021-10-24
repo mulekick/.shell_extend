@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # personal aliases
-alias 'time=/usr/bin/time '
+
 # ------------ HELP ------------
 
 # help on custom commands
@@ -52,6 +52,9 @@ alias myps='ps -o start=START_TIME,args:100=PROCESS,tname=TERMINAL,ppid=PARENT,p
 
 # view last command exit code
 alias procres='echo $? || echo $?'
+
+# wrapper for time using GNU time, aliases management
+alias 'time=/usr/bin/time '
 
 # ------------ SHELL ------------
 
