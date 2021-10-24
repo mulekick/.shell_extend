@@ -7,6 +7,9 @@
 # help on custom commands
 alias cmdhelp='less - < $SHELL_SCRIPTS/README.md'
 
+# bong smoking cow recites dhammapada verse
+alias bs='dhamma | cowsay -f /usr/share/cowsay/cows/bong.cow < /dev/stdin'
+
 # ------------ FILES ------------
 
 # file sizes in K/all files but . and ../list format (sort alphabetically)/directories first/colors/indicator
