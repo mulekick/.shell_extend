@@ -122,9 +122,3 @@ alias parttable='bash $SHELL_SCRIPTS/.bash_commands.sh sd'
 
 # output partition details
 alias partdetail='bash $SHELL_SCRIPTS/.bash_commands.sh pt'
-
-# ----------- KERNEL/SYSTEMD ----------
-
-# print kernel and userspace messages + sudo revocation
-alias babble='sudo dmesg -kHuxL=always && sudo -k'
-
