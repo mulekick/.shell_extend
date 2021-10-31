@@ -90,7 +90,7 @@ elif [[ $1 = "pd" ]]; then
 # pstatus : query dpkg database for package(s) installation status
 elif [[ $1 = "ps" ]]; then
     # output columnated list
-    dpkg-query -Wf='${Package}|${db:Status-Abbrev}|${Version}|${Architecture}|${Installed-Size}|${binary:Synopsis}|${Origin}|${Maintainer}\n' "$2" | column -tN "NAME,STATUS,VERSION,ARCH,SIZE,DESCRIPTION,ORIGIN,MAINTAINER" -s "|"
+    dpkg-query -Wf='${Package}|${db:Status-Abbrev}|${Version}|${Architecture}|${Installed-Size}|${binary:Synopsis}|${Origin}|${Maintainer}\n' "${@:2}" | column -tN "NAME,STATUS,VERSION,ARCH,SIZE,DESCRIPTION,ORIGIN,MAINTAINER" -s "|"
 # -------------------------------------------------
 # tab2space : ask for confirmation and run replacement script
 elif [[ $1 = "ts" ]] && [[ -f "$2" ]]; then
