@@ -16,8 +16,8 @@ ln -s "$cmdarchdir" "$HOME/.shell_extend/.cmd_archive"
 
 # set shell extension
 # shellcheck disable=SC2016
-extendshell='\n\n
-# ------ SET SHELL EXTENSIONS ------\n\n
+extendshell='\n
+# ------ SET SHELL EXTENSIONS ------\n
 if [[ -f $HOME/.shell_extend/.bash_extend ]]; then\n
 \t. $HOME/.shell_extend/.bash_extend\n
 fi'
