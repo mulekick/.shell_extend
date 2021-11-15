@@ -43,6 +43,9 @@ $ arbo <path> <expr>
 $ procres
   > view last command exit code (0 = success, 1 = failure)
 
+$ myps
+  > prints all logged in user's processes
+
 ------------ SHELL ------------
 
 $ varenv <expr>
@@ -70,16 +73,19 @@ $ histprune
 $ vin <file>
   > open file in vi with lines numbers
 
+$ visudo
+  > execute visudo with vim
+
 $ nscript <file>
   > creates a new bash script and edits it
 
 $ tab2space <path>
   > replaces all tabulations by the default indentation value (4 spaces) in file <path>
 
-$ visudo
-  > execute visudo with vim
-
 ------------ APT/DPKG ------------
+
+$ aptsrc
+  > list all configured sources
 
 $ pkfind <expr>
   > list packages matching regular expression <expr> in apt repositories
@@ -90,9 +96,6 @@ $ pdetail <pkgname>
 
 $ pstatus <expr>
   > query dpkg database for installation status of packages matching shell wildcards pattern <expr>
-
-$ aptsrc
-  > list all configured sources
 
 ------------ FILE SYSTEM ------------
 
