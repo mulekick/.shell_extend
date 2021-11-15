@@ -14,32 +14,32 @@ function get_result {
 case 0 in
 # ------------ FILES ------------
 # fsearch : recursive search for files name (shell wildcards)
-"$(get_result "[[ $# -eq 4 ]] && [[ \"$1\" = fs ]] && [[ \"$2\" =~ $RGX_FILE ]] && [[ \"$3\" -gt 0 ]] && [[ -n \"$4\" ]] || false")")
+"$(get_result "[[ $# -eq 4 ]] && [[ \"$1\" = fs ]] && [[ -d \"$2\" ]] && [[ \"$3\" -gt 0 ]] && [[ -n \"$4\" ]] || false")")
     # search from $2 starting point, $3 directories deep for file name matching $4
     find -P "$2" -maxdepth "$3" -name "$4" -ls
 ;;
 # fsearch : recursive search for files name (regexp extended)
-"$(get_result "[[ $# -eq 5 ]] && [[ \"$1\" = fs ]] && [[ \"$2\" =~ $RGX_FILE ]] && [[ \"$3\" -gt 0 ]] && [[ \"$4\" = -r ]] && [[ -n \"$5\" ]] || false")")
+"$(get_result "[[ $# -eq 5 ]] && [[ \"$1\" = fs ]] && [[ -d \"$2\" ]] && [[ \"$3\" -gt 0 ]] && [[ \"$4\" = -r ]] && [[ -n \"$5\" ]] || false")")
     # search from $2 starting point, $3 directories deep for file matching expr $5
     find -P "$2" -maxdepth "$3" -regextype 'posix-extended' -regex "$5" -ls
 ;;
 # fparse : output files lines matching pattern (regexp extended + remove tabs/separators for clean display)
-"$(get_result "[[ $# -eq 4 ]] && [[ \"$1\" = fp ]] && [[ \"$2\" =~ $RGX_FILE ]] && [[ \"$3\" -gt 0 ]] && [[ -n \"$4\" ]] || false")")
+"$(get_result "[[ $# -eq 4 ]] && [[ \"$1\" = fp ]] && [[ -d \"$2\" ]] && [[ \"$3\" -gt 0 ]] && [[ -n \"$4\" ]] || false")")
     # search from $2 starting point, $3 directories deep, output every file line matching expr $4, cut match width to 145 to bypass colums messing the terminal ...
     find -P "$2" -maxdepth "$3" -type f -exec grep -nE "$4" '{}' + | sed -r 's/^([^:]+):([^:]+):(\t|\s)*(.*)$/\1\^\2^\4/gm' - | cut -c -145 - | column -ts '^' -N FILE,LINE,MATCH
 ;;
 # ftype : show matching file types in target directory
-"$(get_result "[[ $# -eq 3 ]] && [[ \"$1\" = ft ]] && [[ \"$2\" =~ $RGX_FILE ]] && [[ -n \"$3\" ]] || false")")
+"$(get_result "[[ $# -eq 3 ]] && [[ \"$1\" = ft ]] && [[ -d \"$2\" ]] && [[ -n \"$3\" ]] || false")")
     # output list one entry per line, launch file, update separator, output columns, regexp on 3rd param value
     find "$2" -maxdepth 1 | file -f - | sed -r 's/:\s{2,}/:/g' - | column -ts ':' | grep -E - --color=always -hTis -e "$3"
 ;;
 # arbo : output file system tree from starting point, pruned, less + color escape sequence
-"$(get_result "[[ $# -eq 2 ]] && [[ \"$1\" = ar ]] && [[ \"$2\" =~ $RGX_FILE ]] || false")")
+"$(get_result "[[ $# -eq 2 ]] && [[ \"$1\" = ar ]] && [[ -d \"$2\" ]] || false")")
     # output everything
     tree --prune -afFhpC "$2" | less -R -
 ;;
 # arbo : same as the above, match optional pattern
-"$(get_result "[[ $# -eq 3 ]] && [[ \"$1\" = ar ]] && [[ \"$2\" =~ $RGX_FILE ]] && [[ -n \"$3\" ]] || false")")
+"$(get_result "[[ $# -eq 3 ]] && [[ \"$1\" = ar ]] && [[ -d \"$2\" ]] && [[ -n \"$3\" ]] || false")")
     # output matches
     tree --prune -afFhpCP "$3" "$2" | less -R -
 ;;
