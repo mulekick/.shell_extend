@@ -31,3 +31,24 @@ if [[ -f $SHELL_SCRIPTS/.bash_commands ]]; then
     # shellcheck disable=SC1091
     . "$SHELL_SCRIPTS/.bash_commands"
 fi
+
+# ------ SHELL CONFIGURATION -------
+
+# test for existence of command archive symlink
+if [[ ! -L "$SHELL_HISTORY" ]]; then
+
+    # create symlink to command archive directory
+    echo -e "$DASH_LINE\nplease provide your command archive directory path :"
+
+    # read input from user
+    read -r cmdarchdir
+
+    # if directory does not exist, create
+    if [[ ! -d $cmdarchdir ]]; then
+        mkdir -pv "$cmdarchdir"
+    fi
+
+    # create symlink in shell-extend directory
+    ln -s "$cmdarchdir" "$SHELL_HISTORY"
+
+fi
