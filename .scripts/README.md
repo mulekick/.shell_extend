@@ -1,9 +1,12 @@
------------- CUSTOM COMMANDS HELP SECTION -----------
+-----------------------------------------------------------------
+------------------ CUSTOM COMMANDS HELP SECTION -----------------
+---------- THOSE COMMANDS DO NOT WORK WHEN USED WITH SUDO -------
+-----------------------------------------------------------------
 
 $ cmdhelp
   > displays this help section
 
------------- FILES ------------
+----------------------------- FILES -----------------------------
 
 $ content <path>
   > list files and directories with details
@@ -19,6 +22,12 @@ $ copyall <source> <target>
 
 $ moveall <source> <target>
   > safe moving of files and directories
+
+$ fsize <file|directory> <file|directory> ...
+  > prints total disk usage for files and directories (including inodes)
+
+$ ftotal <file|directory> <file|directory> ...
+  > prints total number of files for files and directories (recursive)
 
 $ fsearch <directory> <depth> [-r] <name|expr>
   > searches file system from starting point <directory>, <depth> directories depth for files name <name>
@@ -38,7 +47,7 @@ $ arbo <path> <expr>
   > displays pruned file system tree starting from <path> using less + color 
   > if shell wildcard pattern <expr> is present, displays only matching files names
 
------------- PROCESSES ------------
+----------------------- PROCESSES -------------------------------
 
 $ procres
   > view last command exit code (0 = success, 1 = failure)
@@ -46,12 +55,12 @@ $ procres
 $ myps
   > prints all logged in user's processes
 
------------- SHELL ------------
+------------------------- SHELL ---------------------------------
 
 $ varenv <expr>
   > searches <expr> in environment variables
 
------------- HISTORY ------------
+----------------------- HISTORY ---------------------------------
 
 $ prevcmd
   > list 25 last shell commands
@@ -68,7 +77,7 @@ $ histsave
 $ histprune
   > prunes (removes duplicate entries, sorts and formats) all unpruned files in command archives
 
------------- UTILITIES ------------
+---------------------- UTILITIES --------------------------------
 
 $ vin <file>
   > open file in vi with lines numbers
@@ -82,7 +91,7 @@ $ nscript <file>
 $ tab2space <path>
   > replaces all tabulations by the default indentation value (4 spaces) in file <path>
 
------------- APT/DPKG ------------
+---------------------- APT/DPKG ---------------------------------
 
 $ aptsrc
   > list all configured sources
@@ -97,7 +106,7 @@ $ pdetail <pkgname>
 $ pstatus <expr>
   > query dpkg database for installation status of packages matching shell wildcards pattern <expr>
 
------------- FILE SYSTEM ------------
+--------------------- FILE SYSTEM -------------------------------
 
 $ blockdev <disk>
   > display informations and partitions list for disk <disk> (all if not specified)
@@ -108,4 +117,4 @@ $ parttable <disk>
 $ partdetail <partition>
   > display partition details for partition <partition> (required)
 
--------------------------------------
+-----------------------------------------------------------------

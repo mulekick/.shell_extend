@@ -12,8 +12,8 @@ alias bs='dhamma | cowsay -W 120 -e "°°" -f /usr/share/cowsay/cows/bong.cow < 
 
 # ------------ FILES ------------
 
-# file sizes in K/all files but . and ../list format (sort alphabetically)/directories first/colors/indicator
-alias content='ls -hAl --group-directories-first --color --classify'
+# file sizes in K/all files but . and ../list format (sort alphabetically)/directories first/colors/indicator/time format
+alias content='ls -hAl --group-directories-first --color --classify --time-style=long-iso'
 
 # create parents dirs/verbose
 alias makedir='mkdir -pv'
@@ -26,6 +26,12 @@ alias copyall='cp -rpiv'
 
 # overwrite prompt
 alias moveall='mv -i'
+
+# total disk usage in kB (directories or files, includes inode size)
+alias fsize='du -ch --block-size=k --summarize'
+
+# total number of files
+alias ftotal='du -ch --block-size=1 --inodes --summarize'
 
 # search from starting point, n directories depth for given file name/expression
 alias fsearch='. $SHELL_SCRIPTS/.bash_commands.sh fs'
