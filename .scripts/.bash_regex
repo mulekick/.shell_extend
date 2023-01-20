@@ -19,3 +19,6 @@ export RGX_STR="^[a-zA-Z0-9\s]*$"
 
 # file path (absolute, relative, current directory)
 export RGX_FILE="^\/?([^\/\s]+\/)*[^\/\s]+$"
+
+# urls
+export RGX_URL="^(ftp|http|https):\/\/([a-zA-Z0-9-]+\.)+[a-zA-Z0-9-]+(:\d+)?\/[^ \"']+$"
