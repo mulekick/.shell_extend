@@ -2,6 +2,9 @@
 
 # ------ SHELL CUSTOMIZATIONS ------
 
+# add /usr/sbin and /sbin to PATH
+export PATH="$PATH:/usr/sbin:/sbin"
+
 # export customizations folder
 export SHELL_EXTEND="$HOME/.shell_extend"
 

@@ -2,10 +2,10 @@
 
 # set shell extension
 # shellcheck disable=SC2016
-extendshell='\n
-# ------ SET SHELL EXTENSIONS ------\n
-if [[ -f $HOME/.shell_extend/.bash_extend ]]; then\n
-\t. $HOME/.shell_extend/.bash_extend\n
+extendshell='
+# ------ SET SHELL EXTENSIONS ------
+if [[ -f $HOME/.shell_extend/.bash_extend ]]; then
+\t. $HOME/.shell_extend/.bash_extend
 fi'
 
 # append to .bashrc
